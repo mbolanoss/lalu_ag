@@ -1,14 +1,16 @@
 const { ApolloServer } = require("apollo-server");
-const { typeDefs } = require("./typeDefs");
-const { resolvers } = require("./resolvers");
+const { allTypeDefs } = require("./typeDefs/allTypeDefs");
+const { allResolvers } = require("./resolvers/allResolvers");
+
+const PORT = 3000;
 
 async function startApolloServer() {
   const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    typeDefs: allTypeDefs,
+    resolvers: allResolvers,
   });
 
-  const { url } = await server.listen();
+  const { url } = await server.listen({ port: PORT });
   console.log("Server is running on", url);
 }
 
