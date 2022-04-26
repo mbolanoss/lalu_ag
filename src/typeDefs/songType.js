@@ -2,6 +2,7 @@ const { gql } = require("apollo-server");
 
 const songType = gql `
   type Song {
+    _id: String!
     title: String!
     duration: Int!
     artists: [String]!
