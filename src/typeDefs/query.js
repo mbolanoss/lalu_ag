@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server");
 
-const query = gql`
+const query = gql `
   type Query {
     test: String
   }
