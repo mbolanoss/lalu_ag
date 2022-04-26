@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server");
 
-const userType = gql`
+const userType = gql `
   type User {
     firstName: String!
     secondName: String!
