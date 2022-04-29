@@ -1,7 +1,7 @@
 const { userType } = require("./userType");
-const { songType } = require("./songType");
 const { query } = require("./query");
-const { songQuery } = require("./songQuery");
+const { songType } = require("./songs/songType");
+const { songQuery } = require("./songs/songQuery");
 
 // Add all type defs in this array
 const allTypeDefs = [userType, songType, query, songQuery];

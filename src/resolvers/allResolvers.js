@@ -1,5 +1,5 @@
 const { testResolver } = require("./testResolver");
-const { songResolver } = require("./songResolver");
+const { songResolver } = require("./songs/songResolver");
 
 const allResolvers = [testResolver, songResolver];
 
