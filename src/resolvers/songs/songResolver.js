@@ -12,6 +12,18 @@ const songResolver = {
             const data = await axios.get(requestURL);
             return data.data.data;
         },
+        getSongsByArtist: async(parent, args, context, info) => {
+            const id = args.id;
+            const requestURL = `${songsURL}:${songsPORT}/artist/${id}`;
+            const data = await axios.get(requestURL);
+            return data.data.data;
+        },
+        getPopularSongsByArtist: async(parent, args, context, info) => {
+            const id = args.id;
+            const requestURL = `${songsURL}:${songsPORT}/artist/popular/${id}`;
+            const data = await axios.get(requestURL);
+            return data.data.data;
+        }
     },
 };
 
