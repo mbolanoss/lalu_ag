@@ -5,13 +5,13 @@ const { allResolvers } = require("./resolvers/allResolvers");
 const PORT = 3000;
 
 async function startApolloServer() {
-  const server = new ApolloServer({
-    typeDefs: allTypeDefs,
-    resolvers: allResolvers,
-  });
+    const server = new ApolloServer({
+        typeDefs: allTypeDefs,
+        resolvers: allResolvers,
+    });
 
-  const { url } = await server.listen({ port: PORT });
-  console.log("Server is running on", url);
+    const { url } = await server.listen({ port: PORT });
+    console.log("Server is running on", url);
 }
 
 startApolloServer();
