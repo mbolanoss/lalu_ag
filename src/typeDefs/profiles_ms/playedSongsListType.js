@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server");
 
-const playedSongsListTypes = gql`
+const playedSongsListType = gql`
   type PlayedSongsList {
     username: String!
     playedSongs: [PlayedSong!]
@@ -14,4 +14,4 @@ const playedSongsListTypes = gql`
   }
 `;
 
-module.exports = { playedSongsListTypes };
+module.exports = { playedSongsListType };
