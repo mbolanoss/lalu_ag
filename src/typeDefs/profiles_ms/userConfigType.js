@@ -9,4 +9,13 @@ const userConfigType = gql`
   }
 `;
 
-module.exports = { userConfigType };
+const userConfigInput = gql`
+  input UserConfigInput {
+    username: String
+    autoplayOn: Boolean!
+    downloadRoute: String!
+    preferredColor: String!
+  }
+`;
+
+module.exports = { userConfigType, userConfigInput };

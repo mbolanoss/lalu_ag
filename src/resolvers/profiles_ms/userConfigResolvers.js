@@ -31,9 +31,24 @@ const userConfigMutationResolvers = {
       });
       responseStr = response.data;
     } catch (error) {
-      responseStr = error;
+      throw new Error(error.response.data);
     }
 
+    return responseStr;
+  },
+
+  updateUserConfig: async (_, args) => {
+    let responseStr = "";
+
+    try {
+      const response = await axios.put(
+        `http://${profilesMS_url}/userConfig`,
+        args.userConfig
+      );
+      responseStr = response.data;
+    } catch (error) {
+      throw new Error(error.response.data);
+    }
     return responseStr;
   },
 };

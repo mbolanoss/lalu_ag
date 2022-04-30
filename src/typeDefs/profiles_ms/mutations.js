@@ -1,5 +1,6 @@
 const profilesMSMutations = `
-  createUserConfig(username: String!): String
+  createUserConfig(username: String!): String,
+  updateUserConfig(userConfig: UserConfigInput!): String
 `;
 
 module.exports = { profilesMSMutations };
