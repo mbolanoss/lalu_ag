@@ -94,6 +94,26 @@ const userConfigMutationResolvers = {
 
     return responseStr;
   },
+
+  deleteLikedArtist: async (_, args) => {
+    let responseStr = "";
+    try {
+      const response = await axios.delete(
+        `http://${profilesMS_url}/likedArtists`,
+        {
+          params: {
+            username: `${args.username}`,
+            artistName: `${args.artistName}`,
+          },
+        }
+      );
+      responseStr = response.data;
+    } catch (error) {
+      throw new Error(error.response.data);
+    }
+
+    return responseStr;
+  },
 };
 
 module.exports = { userConfigQueryResolvers, userConfigMutationResolvers };
