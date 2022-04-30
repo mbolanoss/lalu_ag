@@ -55,8 +55,6 @@ const userConfigMutationResolvers = {
   createLikedArtistsList: async (_, args) => {
     let responseStr = "";
 
-    console.log(args.username);
-
     try {
       const response = await axios.post(
         `http://${profilesMS_url}/likedArtists/create`,
@@ -64,6 +62,28 @@ const userConfigMutationResolvers = {
         {
           params: {
             username: `${args.username}`,
+          },
+        }
+      );
+      responseStr = response.data;
+    } catch (error) {
+      throw new Error(error.response.data);
+    }
+
+    return responseStr;
+  },
+
+  addLikedArtist: async (_, args) => {
+    let responseStr = "";
+
+    try {
+      const response = await axios.post(
+        `http://${profilesMS_url}/likedArtists`,
+        null,
+        {
+          params: {
+            username: `${args.username}`,
+            artistName: `${args.artistName}`,
           },
         }
       );
