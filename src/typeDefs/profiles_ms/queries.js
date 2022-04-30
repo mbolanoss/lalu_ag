@@ -1,5 +1,5 @@
 const profilesMSQueries = `
-  profileTest(username: String!): UserConfig
+  getUserConfig(username: String!): UserConfig
 `;
 
 module.exports = { profilesMSQueries };
