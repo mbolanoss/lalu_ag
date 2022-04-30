@@ -10,7 +10,6 @@ const playedSongsListType = gql`
     #Song id
     id: Int
     reproductions: Int
-    artistName: String
   }
 `;
 
