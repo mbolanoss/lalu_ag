@@ -1,5 +1,5 @@
-const { testResolver } = require("./testResolver");
+const { eventResolver } = require("./events/eventResolver");
 
-const allResolvers = [testResolver];
+const allResolvers = [eventResolver];
 
 module.exports = { allResolvers };
