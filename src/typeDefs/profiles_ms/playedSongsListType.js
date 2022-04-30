@@ -14,4 +14,12 @@ const playedSongsListType = gql`
   }
 `;
 
-module.exports = { playedSongsListType };
+const addReproductionInput = gql`
+  input AddReproductionInput {
+    username: String!
+    songId: Int!
+    artistName: String!
+  }
+`;
+
+module.exports = { playedSongsListType, addReproductionInput };

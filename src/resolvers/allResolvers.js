@@ -4,11 +4,13 @@ const allResolvers = {
   Query: {
     ...profilesMSResolvers.userConfigQueryResolvers,
     ...profilesMSResolvers.likedArtistsQueryResolvers,
+    ...profilesMSResolvers.playedSongsQueryResolvers,
   },
 
   Mutation: {
     ...profilesMSResolvers.userConfigMutationResolvers,
     ...profilesMSResolvers.likedArtistsMutationResolvers,
+    ...profilesMSResolvers.playedSongsMutationResolvers,
   },
 };
 
