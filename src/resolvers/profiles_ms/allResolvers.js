@@ -1,5 +1,11 @@
-const { userConfigResolvers } = require("./userConfigResolvers");
+const {
+  userConfigQueryResolvers,
+  userConfigMutationResolvers,
+} = require("./userConfigResolvers");
 
-const profilesMSResolvers = { userConfigResolvers };
+const profilesMSResolvers = {
+  userConfigQueryResolvers,
+  userConfigMutationResolvers,
+};
 
 module.exports = { profilesMSResolvers };

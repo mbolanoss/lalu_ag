@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { profilesMS_url } = require("../../MS_urls");
 
-const userConfigResolvers = {
+const userConfigQueryResolvers = {
   getUserConfig: async (_, args) => {
     let body = {};
 
@@ -13,10 +13,29 @@ const userConfigResolvers = {
       body.autoplayOn = response.data.autoplayOn;
       body.downloadRoute = response.data.downloadRoute;
       body.preferredColor = response.data.preferredColor;
-    } catch (error) {}
+    } catch (error) {
+      throw new Error(error.response.data);
+    }
 
     return body;
   },
 };
 
-module.exports = { userConfigResolvers };
+const userConfigMutationResolvers = {
+  createUserConfig: async (_, args) => {
+    let responseStr = "";
+
+    try {
+      const response = await axios.post(`http://${profilesMS_url}/userConfig`, {
+        username: args.username,
+      });
+      responseStr = response.data;
+    } catch (error) {
+      responseStr = error;
+    }
+
+    return responseStr;
+  },
+};
+
+module.exports = { userConfigQueryResolvers, userConfigMutationResolvers };
