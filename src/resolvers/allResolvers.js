@@ -5,6 +5,7 @@ const allResolvers = {
     ...profilesMSResolvers.userConfigQueryResolvers,
     ...profilesMSResolvers.likedArtistsQueryResolvers,
     ...profilesMSResolvers.playedSongsQueryResolvers,
+    ...profilesMSResolvers.playedArtistsQueryResolvers,
   },
 
   Mutation: {

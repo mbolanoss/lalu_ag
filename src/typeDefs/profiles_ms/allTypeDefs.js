@@ -4,6 +4,7 @@ const {
   addReproductionInput,
 } = require("./playedSongsListType");
 const { userConfigType, userConfigInput } = require("./userConfigType");
+const { playedArtistType } = require("./playedArtistType");
 
 const profilesMSTypeDefs = [
   likedArtistsListType,
@@ -11,6 +12,7 @@ const profilesMSTypeDefs = [
   playedSongsListType,
   userConfigInput,
   addReproductionInput,
+  playedArtistType,
 ];
 
 module.exports = { profilesMSTypeDefs };
