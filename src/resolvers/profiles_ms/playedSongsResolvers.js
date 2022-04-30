@@ -19,7 +19,26 @@ const playedSongsMutationResolvers = {
     return responseStr;
   },
 
-  createPlayedSongsList: (_, args) => {},
+  createPlayedSongsList: async (_, args) => {
+    let responseStr = "";
+
+    try {
+      const response = await axios.post(
+        `http://${profilesMS_url}/playedSongs`,
+        null,
+        {
+          params: {
+            username: args.username,
+          },
+        }
+      );
+      responseStr = response.data;
+    } catch (error) {
+      throw new Error(error.response.data);
+    }
+
+    return responseStr;
+  },
 };
 
 module.exports = { playedSongsMutationResolvers, playedSongsQueryResolvers };
