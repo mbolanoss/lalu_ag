@@ -1,7 +1,7 @@
-const { userType } = require("./userType");
+const { profilesMSTypeDefs } = require("./profiles_ms/allTypeDefs");
 const { query } = require("./query");
 
 // Add all type defs in this array
-const allTypeDefs = [userType, query];
+const allTypeDefs = [profilesMSTypeDefs, query];
 
 module.exports = { allTypeDefs };
