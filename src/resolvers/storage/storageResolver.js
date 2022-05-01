@@ -12,13 +12,14 @@ const storageResolver = {
     Mutation:{
 
         addFlyer:async(parent,{file})=>{
-            let response = {};
             let {createReadStream,filename,mimetype, encoding} = await file;
             const location = path.join(__dirname,`/public/images/${filename}`);
             const myfile = createReadStream();
 
             await myfile.pipe(fs.createWriteStream(location));
-            return response;
+            return {
+                url: `The file has been uploaded: ${filename}`
+            }
         }
     }
 };
