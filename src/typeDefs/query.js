@@ -1,13 +1,17 @@
-const { gql } = require("apollo-server");
+const { gql } = require("apollo-server-express");
 const { eventQuery } = require("./events/eventQuery")
 const { eventMutation } = require("./events/eventMutation")
+const {uploadFileQuery} = require("./storage/uploadFileQuery");
+const {uploadFileMutation} = require("./storage/uploadFileMutation");
 
 const query = gql `
   type Query {
-    ${eventQuery}
+    ${eventQuery},
+    ${uploadFileQuery}
   }
   type Mutation {
-    ${eventMutation}
+    ${eventMutation},
+    ${uploadFileMutation}
   }  
 `;
 
