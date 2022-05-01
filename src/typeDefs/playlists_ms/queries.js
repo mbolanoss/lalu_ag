@@ -1,5 +1,5 @@
 const playlistMSQueries = `
-    getAllPlaylists : [Playlist]
+    getUserPlaylists (playlist_username : String !) : [Playlist]
 `;
 
 module.exports = { playlistMSQueries };
