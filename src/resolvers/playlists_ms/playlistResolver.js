@@ -5,7 +5,7 @@ const playlistQueryResolvers = {
     getPlaylists: async (_, args) => {
         let body = {};
         try {
-            const response = await axios.get(`http://${playlistMS_url}/lalu/playlists`);
+            const response = await axios.get(`${playlistMS_url}`);
 
             body.playlist_username = response.data.playlist_username;
             body.playlist_name = response.data.playlist_name;

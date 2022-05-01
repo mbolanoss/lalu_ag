@@ -8,7 +8,7 @@ const playlistType = gql`
         playlist_description : String
         playlist_privacity : Boolean!
         playlist_cover : String
-        playlist_songs : [ObjectId]
+        playlist_songs : [String]
     }
 `;
 
