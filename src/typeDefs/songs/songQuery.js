@@ -4,7 +4,7 @@ const songQuery = gql `
   type Query {
     getSongById(id: String!): Song
     getSongsByArtist(id: String!): [Song]
-    getPopularSongsByArtist(id: String!): [Song]
+    getPopularSongsByArtist(id: String!, limit:Int!): [Song]
   }
 `;
 
