@@ -39,6 +39,16 @@ const songResolver = {
             } catch (error) {
                 console.log(error);
             }
+        },
+        getSongsByIdList: async(parent, args, context, info) => {
+            const ids = args.ids;
+            const requestURL = `${songsURL}:${songsPORT}/track/batch`;
+            try {
+                const data = await axios.post(requestURL, { idList: ["62639fdefdb9629050d427fc", "626c55821723658ab3fb48af"] });
+                return data.data.data;
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     Mutation: {
@@ -75,7 +85,7 @@ const songResolver = {
         },
         likeSong: async(parent, args, context, info) => {
             const id = args.id;
-            const requestURL = `${songsURL}:${songsPORT}/track/like/${id}}`;
+            const requestURL = `${songsURL}:${songsPORT}/track/like/${id}`;
             try {
                 const data = await axios.patch(requestURL);
                 return data.data.data;
@@ -85,7 +95,7 @@ const songResolver = {
         },
         dislikeSong: async(parent, args, context, info) => {
             const id = args.id;
-            const requestURL = `${songsURL}:${songsPORT}/track/dislike/${id}}`;
+            const requestURL = `${songsURL}:${songsPORT}/track/dislike/${id}`;
             try {
                 const data = await axios.patch(requestURL);
                 return data.data.data;

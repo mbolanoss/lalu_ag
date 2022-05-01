@@ -5,6 +5,7 @@ const songQuery = gql `
     getSongById(id: String!): Song
     getSongsByArtist(id: String!): [Song]
     getPopularSongsByArtist(id: String!, limit:Int!): [Song]
+    getSongsByIdList(ids: [String!]): [Song]
   }
 `;
 
