@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const playlistType = gql`
     type Playlist {
-        id : ID
+        _id : String!
         playlist_username : String!
         playlist_name : String!
         playlist_description : String

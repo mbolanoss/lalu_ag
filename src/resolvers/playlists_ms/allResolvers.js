@@ -6,4 +6,4 @@ const playlistsMSResolvers = {
     playlistQueryResolvers,
 }
 
-module.exports = {playlistsMSResolvers};
+module.exports = { playlistsMSResolvers };

@@ -2,23 +2,47 @@ const axios = require('axios');
 const { playlistMS_url } = require('../../MS_urls');
 
 const playlistQueryResolvers = {
-    getPlaylists: async (_, args) => {
-        let body = {};
+    getAllPlaylists: async (_, args) => {
         try {
             const response = await axios.get(`${playlistMS_url}`);
-
-            body.playlist_username = response.data.playlist_username;
-            body.playlist_name = response.data.playlist_name;
-            body.playlist_description = response.data.playlist_description;
-            body.playlist_privacity = response.data.playlist_privacity;
-            body.playlist_cover = response.data.playlist_cover;
-            body.playlist_songs = response.data.playlist_songs;
+            return response.data.data;
         } catch (error) {
             throw new Error(error.response.data);
         }
-
-        return body;
+    },
+    getAllUsernamePlaylists :async(_, args) =>{
+        const playlist_username = args.playlist_username;
+        const requestURL = `${playlistMS_url}/${playlist_username}`;
+        try {
+            const response = await axios.get(requestURL);
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    },
+    getUsernamePlaylistByName : async(_,args) =>{
+        const playlist_username = args.playlist_username;
+        const playlist_name = args.playlist_name;
+        const requestURL = `${playlistMS_url}/${playlist_username}/${playlist_name}`;
+        try {
+            const response = await axios.get(requestURL);
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    },
+    getUsernameSongsPlaylistByName : async(_,args) =>{
+        const playlist_username = args.playlist_username;
+        const playlist_name = args.playlist_name;
+        const requestURL = `${playlistMS_url}/${playlist_username}/${playlist_name}/songs`;
+        try {
+            const response = await axios.get(requestURL);
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
     }
+
 };
 
 module.exports = { playlistQueryResolvers };
