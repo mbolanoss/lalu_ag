@@ -1,5 +1,5 @@
-const { testResolver } = require("./testResolver");
+const { userResolver } = require("./users/userResolver");
 
-const allResolvers = [testResolver];
+const allResolvers = [userResolver];
 
 module.exports = { allResolvers };

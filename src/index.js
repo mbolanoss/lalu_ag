@@ -2,7 +2,7 @@ const { ApolloServer } = require("apollo-server");
 const { allTypeDefs } = require("./typeDefs/allTypeDefs");
 const { allResolvers } = require("./resolvers/allResolvers");
 
-const PORT = 3000;
+const PORT = 5000;
 
 async function startApolloServer() {
   const server = new ApolloServer({

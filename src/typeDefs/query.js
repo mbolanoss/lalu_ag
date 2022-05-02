@@ -1,9 +1,14 @@
 const { gql } = require("apollo-server");
+const { userQuery } = require("./users/userQuery")
+const { userMutation } = require("./users/userMutation")
 
-const query = gql`
+const query = gql `
   type Query {
-    test: String
+    ${userQuery}
   }
+  type Mutation {
+    ${userMutation}
+  }  
 `;
 
 module.exports = { query };
