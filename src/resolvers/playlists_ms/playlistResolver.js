@@ -12,7 +12,7 @@ const playlistQueryResolvers = {
     },
     getAllUsernamePlaylists :async(_, args) =>{
         const playlist_username = args.playlist_username;
-        const requestURL = `${playlistMS_url}/${playlist_username}`;
+        const requestURL = `${playlistMS_url}/username/${playlist_username}`;
         try {
             const response = await axios.get(requestURL);
             return response.data.data;
@@ -23,7 +23,7 @@ const playlistQueryResolvers = {
     getUsernamePlaylistByName : async(_,args) =>{
         const playlist_username = args.playlist_username;
         const playlist_name = args.playlist_name;
-        const requestURL = `${playlistMS_url}/${playlist_username}/${playlist_name}`;
+        const requestURL = `${playlistMS_url}/username/${playlist_username}/${playlist_name}`;
         try {
             const response = await axios.get(requestURL);
             return response.data.data;
@@ -34,7 +34,7 @@ const playlistQueryResolvers = {
     getUsernameSongsPlaylistByName : async(_,args) =>{
         const playlist_username = args.playlist_username;
         const playlist_name = args.playlist_name;
-        const requestURL = `${playlistMS_url}/${playlist_username}/${playlist_name}/songs`;
+        const requestURL = `${playlistMS_url}/username/${playlist_username}/${playlist_name}/songs`;
         try {
             const response = await axios.get(requestURL);
             return response.data.data;
@@ -45,8 +45,18 @@ const playlistQueryResolvers = {
 
     getPlaylistById :async(_, args) =>{
         const _id = args._id;
-        const requestURL = `${playlistMS_url}/${_id}`;
-        console.log(requestURL);
+        const requestURL = `${playlistMS_url}/id/${_id}`;
+        try {
+            const response = await axios.get(requestURL);
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    },
+
+    getSongsPlaylistById : async(_,args) =>{
+        const _id = args._id;
+        const requestURL = `${playlistMS_url}/id/${_id}/songs`;
         try {
             const response = await axios.get(requestURL);
             return response.data.data;

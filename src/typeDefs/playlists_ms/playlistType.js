@@ -40,6 +40,10 @@ const playlistType = gql`
         playlist_cover : String
         playlist_songs : [String]
     }
+
+    type PlaylistSongsById {
+        playlist_songs : [String]
+    }
 `;
 
 module.exports = { playlistType };
