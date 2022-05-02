@@ -1,5 +1,6 @@
 const { playlistType } = require("./playlistType");
 
+
 const playlistsMSTypeDefs = [
     playlistType,
 ];
