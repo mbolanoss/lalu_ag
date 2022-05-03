@@ -53,9 +53,10 @@ const playlistInput = gql`
         playlist_description : String
         playlist_privacity : Boolean!
         playlist_cover : String
-        playlist_songs : [String]
     }
 
 `;
+
+
 
 module.exports = { playlistType, playlistInput };

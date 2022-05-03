@@ -80,12 +80,49 @@ const playlistMutationsResolvers = {
             throw new Error(error.response.data);
         }
     },
+    updatePlaylist : async(_,args) => {
+        const id = args.id;
+        const playlist = args.Playlist;
+        try {
+            const response = await axios.put(
+                `${playlistMS_url}/${id}`,
+                playlist
+            );
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    },
+
+    updateSongPlaylist : async(_,args) => {
+        const playlist_id = args.playlist_id;
+        const song_id = args.song_id;
+        try {
+            const response = await axios.put(
+                `${playlistMS_url}/${playlist_id}/updates/songs/${song_id}`,
+            );
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    },
     deletePlaylist : async(_,args) => {
-        const _id = args._id;
+        const id = args.id;
         try {
             const response = await axios.delete(
-                `${playlistMS_url}/${_id}`,
-                playlist
+                `${playlistMS_url}/${id}`
+            );
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    },
+    deleteSongPlaylist : async(_,args) => {
+        const playlist_id = args.playlist_id;
+        const song_id = args.song_id;
+        try {
+            const response = await axios.put(
+                `${playlistMS_url}/${playlist_id}/delete/songs/${song_id}`
             );
             return response.data.data;
         } catch (error) {
