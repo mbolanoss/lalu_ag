@@ -67,4 +67,20 @@ const playlistQueryResolvers = {
 
 };
 
-module.exports = { playlistQueryResolvers };
+const playlistMutationsResolvers = {
+    createPlaylist : async(_,args) => {
+        const playlist = args.playlist;
+        try {
+            const response = await axios.post(
+                `${playlistMS_url}`,
+                playlist
+            );
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    }
+
+};
+
+module.exports = { playlistQueryResolvers , playlistMutationsResolvers };

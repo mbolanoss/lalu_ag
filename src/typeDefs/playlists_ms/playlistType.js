@@ -46,4 +46,17 @@ const playlistType = gql`
     }
 `;
 
-module.exports = { playlistType };
+const playlistInput = gql`
+    input PlaylistInput {
+        _id : String!
+        playlist_username : String!
+        playlist_name : String!
+        playlist_description : String
+        playlist_privacity : Boolean!
+        playlist_cover : String
+        playlist_songs : [String]
+    }
+
+`;
+
+module.exports = { playlistType, playlistInput };
