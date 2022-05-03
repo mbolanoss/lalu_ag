@@ -34,6 +34,10 @@ const userType = gql`
         email: String
         user_password: String!
     }
+
+    input deleteIdInput{
+        id: Int!
+    }
 `;
 
 module.exports = {userType};

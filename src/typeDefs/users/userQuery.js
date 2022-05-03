@@ -1,5 +1,5 @@
 const userQuery = `
-    viewUser(id: ID!): User,
+    viewUser: [User],
     showUsers: [User]
 `;
 
