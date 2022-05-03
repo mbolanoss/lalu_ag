@@ -79,7 +79,19 @@ const playlistMutationsResolvers = {
         } catch (error) {
             throw new Error(error.response.data);
         }
-    }
+    },
+    deletePlaylist : async(_,args) => {
+        const _id = args._id;
+        try {
+            const response = await axios.delete(
+                `${playlistMS_url}/${_id}`,
+                playlist
+            );
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    },
 
 };
 
