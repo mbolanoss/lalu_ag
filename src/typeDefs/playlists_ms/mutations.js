@@ -1,6 +1,6 @@
 const playlistMSMutations = `
-    createPlaylist : String,
-    updatePlaylist (playlist : PlaylistInput!) : String
+    createPlaylist (Playlist : PlaylistInput!) : Playlist
+    updatePlaylist (Playlist : PlaylistInput!) : Playlist
 `;
 
 module.exports = {playlistMSMutations}

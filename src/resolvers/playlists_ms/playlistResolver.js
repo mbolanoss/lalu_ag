@@ -69,10 +69,10 @@ const playlistQueryResolvers = {
 
 const playlistMutationsResolvers = {
     createPlaylist : async(_,args) => {
-        const playlist = args.playlist;
+        const playlist = args.Playlist;
         try {
             const response = await axios.post(
-                `${playlistMS_url}`,
+                `${playlistMS_url}/newPlaylist`,
                 playlist
             );
             return response.data.data;
