@@ -48,7 +48,6 @@ const playlistType = gql`
 
 const playlistInput = gql`
     input PlaylistInput {
-        _id : String!
         playlist_username : String!
         playlist_name : String!
         playlist_description : String
