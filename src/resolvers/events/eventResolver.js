@@ -1,7 +1,11 @@
 const {gql} = require("apollo-server")
 const axios = require("axios");
+const path = require("path");
+const fs = require("fs");
+const FormData = require("form-data");
 
 const local_url = "http://localhost";
+const local_st = "http://127.0.0.1";
 const eventsMS_port = "8080";
 const storageMS_port = "3000";
 
@@ -35,12 +39,23 @@ const eventResolver = {
         }
     },
     Mutation: {
-        createEvent: async(_, { event }) => {
-            let response = {};
-            const request_url = `${eventsMS_url}/create`;
-            response = await axios.post(request_url, event);
-            return "Response status: " + response.data.status + ", " +
-                response.data.message + ", Event: " + event.eventName;
+        createEvent: async(_, { event , file }) => {
+            let {createReadStream,filename,mimetype, encoding} = await file;
+            const location = path.join(__dirname,`/public/images/${filename}`);
+            const myfile = createReadStream();
+
+            await myfile.pipe(fs.createWriteStream(location));
+
+            const form = new FormData();
+            form.append('file', myfile, `${filename}`);
+            const storage_url = `${local_st}:${storageMS_port}/event-pics`;
+            const response_st = await axios.post(storage_url, form);
+
+            const events_url = `${eventsMS_url}/create`;
+            const response_ev = await axios.post(events_url, event);
+            return "Response status: " + response_ev.data.status + ", " +
+                response_ev.data.message + ", Event: " + event.eventName + " \n" +
+                `The file has been uploaded: ${filename}`;
         },
         cancelEvent: async(_, args) => {
             let response = {}
