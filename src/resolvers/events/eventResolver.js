@@ -3,13 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const fs = require("fs");
 const FormData = require("form-data");
-
-const local_url = "http://172.19.0.3";
-const local_st = "http://172.17.0.4";
-const eventsMS_port = "8080";
-const storageMS_port = "3000";
-
-const eventsMS_url = `${local_url}:${eventsMS_port}/events`;
+const { eventsMS_url, storageMS_url } = require("../../MS_urls");
 
 const eventQueryResolvers = {
   viewEvent: async (_, args) => {
@@ -58,8 +52,11 @@ const eventMutationResolvers = {
 
       const form = new FormData();
       form.append("file", myfile, `${filename}`);
-      const storage_url = `${local_st}:${storageMS_port}/event-pics`;
-      const response_st = await axios.post(storage_url, form);
+      //const storage_url = `${local_st}:${storageMS_port}/event-pics`;
+      const response_st = await axios.post(
+        `http://${storageMS_url}/event-pics`,
+        form
+      );
       try {
         fs.unlinkSync(location);
         console.log("File removed");
