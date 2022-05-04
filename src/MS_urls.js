@@ -18,8 +18,8 @@ const profilesMS_ip = "172.17.0.2";
 const profilesMS_port = 3000;
 const profilesMS_url = `${profilesMS_ip}:${profilesMS_port}`;
 
-const authMS_ip = "";
-const authMS_port = 0;
+const authMS_ip = "http://172.18.0.3";
+const authMS_port = 3000;
 const authMS_url = `${authMS_ip}:${authMS_port}`;
 
 module.exports = {

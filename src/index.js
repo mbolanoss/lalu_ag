@@ -1,14 +1,14 @@
-const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
+const express = require("express");
+const { ApolloServer, gql } = require("apollo-server-express");
 const {
   GraphQLUpload,
   graphqlUploadExpress, // A Koa implementation is also exported.
-} = require('graphql-upload');
+} = require("graphql-upload");
 
-const { finished } = require('stream/promises');
+const { finished } = require("stream/promises");
 
 const { allTypeDefs } = require("./typeDefs/allTypeDefs");
-const { allResolvers } = require("./resolvers/allResolvers")
+const { allResolvers } = require("./resolvers/allResolvers");
 
 const PORT = 5000;
 
@@ -16,7 +16,7 @@ async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs: allTypeDefs,
     resolvers: allResolvers,
-    context: ({ req }) => ({ req })
+    context: ({ req }) => ({ req }),
   });
 
   await server.start();
@@ -29,7 +29,7 @@ async function startApolloServer() {
   server.applyMiddleware({ app });
 
   const { url } = await app.listen({ port: PORT });
-  console.log("Server is running on http://localhost:3000/graphql" );
+  console.log(`Server is running on http://localhost:${PORT}/graphql`);
 }
 
 startApolloServer();

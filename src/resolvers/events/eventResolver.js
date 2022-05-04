@@ -44,7 +44,7 @@ const eventMutationResolvers = {
     const response_ev = await axios.post(events_url, event);
     let { createReadStream, filename, mimetype, encoding } = await file;
 
-    if (rensponse_ev.data.status == "OK") {
+    if (response_ev.data.status == "OK") {
       const location = path.join(__dirname, `/public/images/${filename}`);
       const myfile = createReadStream();
 
