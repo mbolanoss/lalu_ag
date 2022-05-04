@@ -38,14 +38,16 @@ const artistType = gql`
     type ArtistById {
         artist_username : String!
         artist_name : String!
-        artist_description : String
-        artist_privacity : Boolean!
-        artist_cover : String
+        artist_biography: String!
+        artist_followers : Int
+        artist_albums : [String]
         artist_songs : [String]
+        artist_contact_information : [String]
+        artist_photo : String
     }
 
     type ArtistAlbumsById {
-        artist_songs : [String]
+        artist_albums : [String]
     }
 
     type ArtistSongsById {
@@ -53,7 +55,7 @@ const artistType = gql`
     }
 
     type ArtistInformationById {
-        artist_songs : [String]
+        artist_contact_information : [String]
     }
 `;
 

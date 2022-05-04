@@ -98,7 +98,7 @@ const artistMutationsResolvers = {
         const artist = args.Artist;
         try {
             const response = await axios.post(
-                `${artist}/newArtist`,
+                `${artistMS_url}/newArtist`,
                 artist
             );
             return response.data.data;
