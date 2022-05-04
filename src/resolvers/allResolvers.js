@@ -7,7 +7,7 @@ const allResolvers = {
         ...artistsMSResolvers.artistQueryResolvers,
     },
 
-    Mutation : {
+    Mutation: {
         ...playlistsMSResolvers.playlistMutationsResolvers,
         ...artistsMSResolvers.artistMutationsResolvers,
     },

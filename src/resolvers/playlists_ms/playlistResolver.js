@@ -10,7 +10,7 @@ const playlistQueryResolvers = {
             throw new Error(error.response.data);
         }
     },
-    getAllUsernamePlaylists :async(_, args) =>{
+    getAllUsernamePlaylists: async (_, args) => {
         const playlist_username = args.playlist_username;
         const requestURL = `${playlistMS_url}/username/${playlist_username}`;
         try {
@@ -20,7 +20,7 @@ const playlistQueryResolvers = {
             throw new Error(error.response.data);
         }
     },
-    getUsernamePlaylistByName : async(_,args) =>{
+    getUsernamePlaylistByName: async (_, args) => {
         const playlist_username = args.playlist_username;
         const playlist_name = args.playlist_name;
         const requestURL = `${playlistMS_url}/username/${playlist_username}/${playlist_name}`;
@@ -31,7 +31,7 @@ const playlistQueryResolvers = {
             throw new Error(error.response.data);
         }
     },
-    getUsernameSongsPlaylistByName : async(_,args) =>{
+    getUsernameSongsPlaylistByName: async (_, args) => {
         const playlist_username = args.playlist_username;
         const playlist_name = args.playlist_name;
         const requestURL = `${playlistMS_url}/username/${playlist_username}/${playlist_name}/songs`;
@@ -43,7 +43,7 @@ const playlistQueryResolvers = {
         }
     },
 
-    getPlaylistById :async(_, args) =>{
+    getPlaylistById: async (_, args) => {
         const _id = args._id;
         const requestURL = `${playlistMS_url}/id/${_id}`;
         try {
@@ -54,7 +54,7 @@ const playlistQueryResolvers = {
         }
     },
 
-    getSongsPlaylistById : async(_,args) =>{
+    getSongsPlaylistById: async (_, args) => {
         const _id = args._id;
         const requestURL = `${playlistMS_url}/id/${_id}/songs`;
         try {
@@ -68,7 +68,7 @@ const playlistQueryResolvers = {
 };
 
 const playlistMutationsResolvers = {
-    createPlaylist : async(_,args) => {
+    createPlaylist: async (_, args) => {
         const playlist = args.Playlist;
         try {
             const response = await axios.post(
@@ -80,7 +80,7 @@ const playlistMutationsResolvers = {
             throw new Error(error.response.data);
         }
     },
-    updatePlaylist : async(_,args) => {
+    updatePlaylist: async (_, args) => {
         const id = args.id;
         const playlist = args.Playlist;
         try {
@@ -94,7 +94,7 @@ const playlistMutationsResolvers = {
         }
     },
 
-    updateSongPlaylist : async(_,args) => {
+    updateSongPlaylist: async (_, args) => {
         const playlist_id = args.playlist_id;
         const song_id = args.song_id;
         try {
@@ -106,7 +106,7 @@ const playlistMutationsResolvers = {
             throw new Error(error.response.data);
         }
     },
-    deletePlaylist : async(_,args) => {
+    deletePlaylist: async (_, args) => {
         const id = args.id;
         try {
             const response = await axios.delete(
@@ -117,7 +117,7 @@ const playlistMutationsResolvers = {
             throw new Error(error.response.data);
         }
     },
-    deleteSongPlaylist : async(_,args) => {
+    deleteSongPlaylist: async (_, args) => {
         const playlist_id = args.playlist_id;
         const song_id = args.song_id;
         try {
@@ -132,4 +132,4 @@ const playlistMutationsResolvers = {
 
 };
 
-module.exports = { playlistQueryResolvers , playlistMutationsResolvers };
+module.exports = { playlistQueryResolvers, playlistMutationsResolvers };
