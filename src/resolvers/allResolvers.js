@@ -1,6 +1,29 @@
-const { userResolver } = require("./users/userResolver");
+//const { userResolver } = require("./users/userResolver");
+//const allResolvers = [userResolver];
+const {
+  eventMutationResolvers,
+  eventQueryResolvers,
+} = require("./events/eventResolver");
 
+const { profilesMSResolvers } = require("./profiles_ms/allResolvers");
 
-const allResolvers = [userResolver];
+const allResolvers = {
+  Query: {
+    ...profilesMSResolvers.userConfigQueryResolvers,
+    ...profilesMSResolvers.likedArtistsQueryResolvers,
+    ...profilesMSResolvers.playedSongsQueryResolvers,
+    ...profilesMSResolvers.playedArtistsQueryResolvers,
+    
+    ...eventQueryResolvers
+  },
+
+  Mutation: {
+    ...profilesMSResolvers.userConfigMutationResolvers,
+    ...profilesMSResolvers.likedArtistsMutationResolvers,
+    ...profilesMSResolvers.playedSongsMutationResolvers,
+    
+    ...eventMutationResolvers
+  },
+};
 
 module.exports = { allResolvers };
