@@ -1,3 +1,8 @@
+const {
+  eventMutationResolvers,
+  eventQueryResolvers,
+} = require("./events/eventResolver");
+
 const { profilesMSResolvers } = require("./profiles_ms/allResolvers");
 
 const allResolvers = {
@@ -6,12 +11,16 @@ const allResolvers = {
     ...profilesMSResolvers.likedArtistsQueryResolvers,
     ...profilesMSResolvers.playedSongsQueryResolvers,
     ...profilesMSResolvers.playedArtistsQueryResolvers,
+    
+    ...eventQueryResolvers
   },
 
   Mutation: {
     ...profilesMSResolvers.userConfigMutationResolvers,
     ...profilesMSResolvers.likedArtistsMutationResolvers,
     ...profilesMSResolvers.playedSongsMutationResolvers,
+    
+    ...eventMutationResolvers
   },
 };
 
