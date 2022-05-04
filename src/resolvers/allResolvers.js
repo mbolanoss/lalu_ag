@@ -1,6 +1,15 @@
-const { eventResolver } = require("./events/eventResolver");
-const { storageResolver } = require("./storage/storageResolver");
+const {
+  eventMutationResolvers,
+  eventQueryResolvers,
+} = require("./events/eventResolver");
 
-const allResolvers = [eventResolver];
+const allResolvers = {
+  Query: {
+    ...eventQueryResolvers,
+  },
+  Mutation: {
+    ...eventMutationResolvers,
+  },
+};
 
 module.exports = { allResolvers };
