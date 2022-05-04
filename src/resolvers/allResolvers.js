@@ -1,3 +1,6 @@
+const { playlistsMSResolvers } = require('./playlists_ms/allResolvers');
+const { artistsMSResolvers } = require('./artists_ms/allResolvers');
+  
 const {
   eventMutationResolvers,
   eventQueryResolvers,
@@ -22,6 +25,9 @@ const allResolvers = {
     ...eventQueryResolvers,
 
     ...userQueryResolvers,
+    
+    ...playlistsMSResolvers.playlistQueryResolvers,
+    ...artistsMSResolvers.artistQueryResolvers,
   },
 
   Mutation: {
@@ -32,6 +38,9 @@ const allResolvers = {
     ...eventMutationResolvers,
 
     ...userMutationResolvers,
+    
+    ...playlistsMSResolvers.playlistMutationsResolvers,
+    ...artistsMSResolvers.artistMutationsResolvers,
   },
 };
 

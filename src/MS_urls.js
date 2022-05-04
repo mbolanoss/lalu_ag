@@ -4,7 +4,7 @@ const songsMS_url = `${songsMS_ip}:${songsMS_port}`;
 
 const playlistsMS_ip = "172.17.0.4";
 const playlistsMS_port = 3000;
-const playlistsMS_url = `${playlistsMS_ip}:${playlistsMS_port}`;
+const playlistsMS_url = `${playlistsMS_ip}:${playlistsMS_port}/lalu/playlists`;
 
 const eventsMS_ip = "http://172.19.0.3";
 const eventsMS_port = 8080;
@@ -22,6 +22,10 @@ const authMS_ip = "http://172.18.0.3";
 const authMS_port = 3000;
 const authMS_url = `${authMS_ip}:${authMS_port}`;
 
+const artistMS_ip = "http://localhost";
+const artistMS_port = 3000;
+const artistMS_url = `${artistMS_ip}:${artistMS_port}/lalu/artist`
+
 module.exports = {
   songsMS_url,
   playlistsMS_url,
@@ -29,4 +33,5 @@ module.exports = {
   storageMS_url,
   profilesMS_url,
   authMS_url,
+  artistMS_url,
 };
