@@ -1,7 +1,7 @@
 const userMutation = `
     createUser(user: UserInput!): String,
     editUser( edit_user: EditUserInput!): String,
-    deleteUser(id: deleteIdInput!): String,
+    deleteUser(id: String!): String,
     loginUser(login: LoginInput!): String
 
 `;

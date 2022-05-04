@@ -8,6 +8,7 @@ async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs: allTypeDefs,
     resolvers: allResolvers,
+    context: ({ req }) => ({ req })
   });
 
   const { url } = await server.listen({ port: PORT });

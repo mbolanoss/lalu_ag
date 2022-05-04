@@ -1,4 +1,5 @@
 const {gql} = require("apollo-server")
+const { ApolloServer } = require("apollo-server");
 const axios = require("axios");
 const {parse, stringify} = require('flatted');
 
@@ -8,16 +9,27 @@ const usersMS_port = "3000";
 
 const usersMS_url = `${local_url}:${usersMS_port}`;
 
+
 const userResolver = {
     Query: {
-        viewUser: async () => {
+        viewUser: async (_, args, context) => {
+            //console.log(context.req.headers);
+            
             // Declare the object that will be returned
-            let response = []
-            const request_url = `${usersMS_url}/auth/profile`
-            response = await axios.get(request_url);
-            return response.data;
+            try{
+                let response = []
+                const request_url = `${usersMS_url}/auth/profile`
+                response = await axios.get(request_url, {headers: {'token': context.req.headers.authorization}});
+                console.log(response.data);
+                return response.data;
+            }
+            catch(err){
+                console.log("e");
+                return "Operation failed";
+            }
+
         },
-        
+
         showUsers: async() => {
             let response = []
             const request_url = `${usersMS_url}/users`
@@ -53,12 +65,12 @@ const userResolver = {
             }
         },
 
-        deleteUser: async(_, id) => {
-            id = parse(stringify(id)); 
+        deleteUser: async(_, args) => {
+            const id = args.id;
             console.log(id);
             try{
                 const request_url = `${usersMS_url}/users/delete_user`
-                const response = await axios.delete(request_url, id);
+                const response = await axios.delete(request_url, {data: {id: `${id}`}});
                 return "User deleted successfully";
             }
             catch(err){
@@ -69,7 +81,7 @@ const userResolver = {
 
         loginUser: async(_,  login ) => {
             log_user = parse(stringify(login));
-            console.log(log_user.login);
+            //console.log(log_user.login);
             try{
                 const request_url = `${usersMS_url}/auth/login`
                 const response = await axios.post(request_url, log_user.login);
