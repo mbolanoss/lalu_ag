@@ -10,12 +10,13 @@ const { finished } = require('stream/promises');
 const { allTypeDefs } = require("./typeDefs/allTypeDefs");
 const { allResolvers } = require("./resolvers/allResolvers")
 
-const PORT = 3000;
+const PORT = 5000;
 
 async function startApolloServer() {
   const server = new ApolloServer({
-    typeDefs:allTypeDefs,
-    resolvers:allResolvers,
+    typeDefs: allTypeDefs,
+    resolvers: allResolvers,
+    context: ({ req }) => ({ req })
   });
 
   await server.start();

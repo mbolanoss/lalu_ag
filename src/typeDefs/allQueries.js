@@ -1,3 +1,6 @@
+const { userQuery } = require("./users/userQuery")
+const { userMutation } = require("./users/userMutation") 
+ 
 const { eventQuery } = require("./events/eventQuery");
 const { eventMutation } = require("./events/eventMutation");
 
@@ -9,11 +12,13 @@ const query = gql`
   type Query {
     ${eventQuery}
     ${profilesMSQueries}
+    ${userQuery}
   }
 
   type Mutation {
     ${profilesMSMutations}
     ${eventMutation}
+    ${userMutation}
   }
 `;
 

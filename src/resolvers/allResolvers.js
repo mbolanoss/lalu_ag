@@ -1,3 +1,5 @@
+//const { userResolver } = require("./users/userResolver");
+//const allResolvers = [userResolver];
 const {
   eventMutationResolvers,
   eventQueryResolvers,
