@@ -1,3 +1,6 @@
+const { songResolver } = require("./songs/songResolver");
+const { storageResolver } = require("./songStorage/storageResolver");  
+
 const { playlistsMSResolvers } = require('./playlists_ms/allResolvers');
 const { artistsMSResolvers } = require('./artists_ms/allResolvers');
   
@@ -28,6 +31,9 @@ const allResolvers = {
     
     ...playlistsMSResolvers.playlistQueryResolvers,
     ...artistsMSResolvers.artistQueryResolvers,
+    
+    ...songResolver.Query,
+    ...storageResolver.Query,
   },
 
   Mutation: {
@@ -41,6 +47,9 @@ const allResolvers = {
     
     ...playlistsMSResolvers.playlistMutationsResolvers,
     ...artistsMSResolvers.artistMutationsResolvers,
+    
+    ...songResolver.Mutation,
+    ...storageResolver.Mutation,
   },
 };
 

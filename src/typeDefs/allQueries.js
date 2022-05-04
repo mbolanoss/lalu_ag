@@ -28,6 +28,7 @@ const query = gql`
     ${userMutation}
     ${playlistMSMutations}
     ${artistMSMutations}
+
   }
 `;
 
