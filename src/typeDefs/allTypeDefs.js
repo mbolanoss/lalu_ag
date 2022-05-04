@@ -1,4 +1,4 @@
-const { query } = require("./query");
+const { query } = require("./allQueries");
 const { eventType } = require("./events/eventType")
 const { uploadFileType } = require("./storage/uploadFileType")
 
