@@ -1,6 +1,11 @@
 const express = require("express");
 const { ApolloServer, gql } = require("apollo-server-express");
-const { graphqlUploadExpress } = require("graphql-upload");
+const {
+  GraphQLUpload,
+  graphqlUploadExpress, // A Koa implementation is also exported.
+} = require("graphql-upload");
+
+const { finished } = require("stream/promises");
 
 const { allTypeDefs } = require("./typeDefs/allTypeDefs");
 const { allResolvers } = require("./resolvers/allResolvers");
@@ -11,6 +16,7 @@ async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs: allTypeDefs,
     resolvers: allResolvers,
+    context: ({ req }) => ({ req }),
   });
 
   await server.start();
