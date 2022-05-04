@@ -1,4 +1,4 @@
-const { playlistType , playlistInput} = require("./playlistType");
+const { playlistType, playlistInput } = require("./playlistType");
 
 
 const playlistsMSTypeDefs = [

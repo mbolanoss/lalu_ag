@@ -1,4 +1,5 @@
 const playlistMSQueries = `
+
     getAllPlaylists : [Playlist]
     getAllUsernamePlaylists (playlist_username : String!) : [PlaylistsByUserName]
     getUsernamePlaylistByName (playlist_username : String! , playlist_name : String! ) : [PlaylistNameByUserName]

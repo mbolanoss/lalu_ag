@@ -1,12 +1,12 @@
 const {
     playlistQueryResolvers,
-    playlistMutationsResolvers
+    playlistMutationsResolvers,
 } = require('./playlistResolver');
 
 
 const playlistsMSResolvers = {
     playlistQueryResolvers,
-    playlistMutationsResolvers
+    playlistMutationsResolvers,
 }
 
 module.exports = { playlistsMSResolvers };
