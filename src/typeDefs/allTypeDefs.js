@@ -1,5 +1,5 @@
 const { userType } = require("./users/userType");
-const { query } = require("./query");
+const { query } = require("./allQueries");
 
 // Add all type defs in this array
 const allTypeDefs = [userType, query];
