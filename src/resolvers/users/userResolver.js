@@ -13,29 +13,23 @@ const usersMS_url = `${local_url}:${usersMS_port}`;
 const userResolver = {
     Query: {
         viewUser: async (_, args, context) => {
-            //console.log(context.req.headers);
-            
-            // Declare the object that will be returned
+            //We use context to get the token from the request
             try{
                 let response = []
                 const request_url = `${usersMS_url}/auth/profile`
                 response = await axios.get(request_url, {headers: {'token': context.req.headers.authorization}});
-                console.log(response.data);
                 return response.data;
             }
             catch(err){
-                console.log("e");
-                return "Operation failed";
+                console.log("error, returning null");
+                return null;
             }
-
         },
-
         showUsers: async() => {
             let response = []
             const request_url = `${usersMS_url}/users`
             response = await axios.get(request_url);
             return response.data
-
         }
     },
     Mutation: {
@@ -44,7 +38,7 @@ const userResolver = {
                 try{
                     const request_url = `${usersMS_url}/users`
                     const response = await axios.post(request_url, n_user.user);
-                    console.log(response.newUser);
+                    //console.log(response.newUser);
                     return "User created successfully";
                 }
                 catch(err){
@@ -67,7 +61,7 @@ const userResolver = {
 
         deleteUser: async(_, args) => {
             const id = args.id;
-            console.log(id);
+            //console.log(id);
             try{
                 const request_url = `${usersMS_url}/users/delete_user`
                 const response = await axios.delete(request_url, {data: {id: `${id}`}});
