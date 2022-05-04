@@ -40,22 +40,36 @@ const eventResolver = {
     },
     Mutation: {
         createEvent: async(_, { event , file }) => {
-            let {createReadStream,filename,mimetype, encoding} = await file;
-            const location = path.join(__dirname,`/public/images/${filename}`);
-            const myfile = createReadStream();
-
-            await myfile.pipe(fs.createWriteStream(location));
-
-            const form = new FormData();
-            form.append('file', myfile, `${filename}`);
-            const storage_url = `${local_st}:${storageMS_port}/event-pics`;
-            const response_st = await axios.post(storage_url, form);
 
             const events_url = `${eventsMS_url}/create`;
             const response_ev = await axios.post(events_url, event);
-            return "Response status: " + response_ev.data.status + ", " +
-                response_ev.data.message + ", Event: " + event.eventName + " \n" +
-                `The file has been uploaded: ${filename}`;
+            let {createReadStream,filename,mimetype, encoding} = await file;
+
+            if ( rensponse_ev.data.status == "OK" ) {
+                const location = path.join(__dirname,`/public/images/${filename}`);
+                const myfile = createReadStream();
+
+                await myfile.pipe(fs.createWriteStream(location));
+
+                const form = new FormData();
+                form.append('file', myfile, `${filename}`);
+                const storage_url = `${local_st}:${storageMS_port}/event-pics`;
+                const response_st = await axios.post(storage_url, form);
+                try{
+                    fs.unlinkSync(location);
+                    console.log("File removed");
+                } catch (error) {
+                    console.error(error);
+                }
+                return "Response status: " + response_ev.data.status + ", " +
+                    response_ev.data.message + ", Event: " + event.eventName + " \n" +
+                    `The file has been uploaded: ${filename}`;
+            } else {
+                return "Response status: " + response_ev.data.status + ", " +
+                    response_ev.data.message + ", Event: " + event.eventName + " \n" +
+                    `The file cannot be uploaded: ${filename}`;
+            }
+
         },
         cancelEvent: async(_, args) => {
             let response = {}
