@@ -3,7 +3,7 @@ const { gql } = require("apollo-server");
 const songMutation = gql `
   type Mutation {
     test: String
-    createSong(Song: SongInput!):Song
+    createSong(Song: SongInput!, file: FileUpload!):Song
     updateSong(id: String!, Song: SongInput!): Song
     deleteSong(id: String!): Song
     likeSong(id: String!): Song
