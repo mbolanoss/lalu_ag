@@ -1,4 +1,3 @@
-const { userType } = require("./userType");
 const { query } = require("./allQueries");
 
 const { songType } = require("./songs/songType");
@@ -11,7 +10,6 @@ const { songStorageType } = require("./songStorage/songStorageType");
 
 // Add all type defs in this array
 const allTypeDefs = [
-  userType,
   songType,
   query,
   songQuery,

@@ -1,31 +1,29 @@
-const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
-const {
-    graphqlUploadExpress,
-} = require('graphql-upload');
+const express = require("express");
+const { ApolloServer, gql } = require("apollo-server-express");
+const { graphqlUploadExpress } = require("graphql-upload");
 
 const { allTypeDefs } = require("./typeDefs/allTypeDefs");
-const { allResolvers } = require("./resolvers/allResolvers")
+const { allResolvers } = require("./resolvers/allResolvers");
 
-const PORT = 3000;
+const PORT = 5000;
 
 async function startApolloServer() {
-    const server = new ApolloServer({
-        typeDefs: allTypeDefs,
-        resolvers: allResolvers,
-    });
+  const server = new ApolloServer({
+    typeDefs: allTypeDefs,
+    resolvers: allResolvers,
+  });
 
-    await server.start();
+  await server.start();
 
-    const app = express();
+  const app = express();
 
-    // This middleware should be added before calling `applyMiddleware`.
-    app.use(graphqlUploadExpress());
+  // This middleware should be added before calling `applyMiddleware`.
+  app.use(graphqlUploadExpress());
 
-    server.applyMiddleware({ app });
+  server.applyMiddleware({ app });
 
-    const { url } = await app.listen({ port: PORT });
-    console.log("Server is running on http://localhost:3000/graphql");
+  const { url } = await app.listen({ port: PORT });
+  console.log(`Server is running on http://localhost:${PORT}/graphql`);
 }
 
 startApolloServer();
