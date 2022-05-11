@@ -1,9 +1,9 @@
-const songsMS_ip = "http://172.17.0.7";
-const songsMS_port = 3000;
+const songsMS_ip = "http://localhost";
+const songsMS_port = 3003;
 const songsMS_url = `${songsMS_ip}:${songsMS_port}`;
 
-const playlistsMS_ip = "http://172.17.0.5";
-const playlistsMS_port = 3000;
+const playlistsMS_ip = "http://localhost";
+const playlistsMS_port = 3001;
 const playlistsMS_url = `${playlistsMS_ip}:${playlistsMS_port}/lalu/playlists`;
 
 const eventsMS_ip = "http://172.19.0.3";

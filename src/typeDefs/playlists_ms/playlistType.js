@@ -8,41 +8,30 @@ const playlistType = gql`
         playlist_description : String
         playlist_privacity : Boolean!
         playlist_cover : String
-        playlist_songs : [String]
-    }
-
-    type PlaylistsByUserName {
-        _id : String!
-        playlist_name : String!
-        playlist_description : String
-        playlist_privacity : Boolean!
-        playlist_cover : String
-        playlist_songs : [String]
-    }
-
-    type PlaylistNameByUserName {
-        _id : String!
-        playlist_description : String
-        playlist_privacity : Boolean!
-        playlist_cover : String
-        playlist_songs : [String]
+        playlist_songs : [songFromPlaylist]
     }
 
     type PlaylistSongsByUserName {
-        playlist_songs : [String]
-    }
-
-    type PlaylistById {
-        playlist_username : String!
-        playlist_name : String!
-        playlist_description : String
-        playlist_privacity : Boolean!
-        playlist_cover : String
-        playlist_songs : [String]
+        playlist_songs : [songFromPlaylist]
     }
 
     type PlaylistSongsById {
-        playlist_songs : [String]
+        playlist_songs : [songFromPlaylist]
+    }
+    
+    type songFromPlaylist {
+        _id: String!
+        title: String!
+        duration: Int!
+        artists: [String]!
+        tags: [String]!
+        album: String!
+        privacy: Boolean!
+        credits: [String]!
+        releaseDate: String!
+        plays: Int!
+        likes: Int!
+        dislikes: Int!
     }
 `;
 

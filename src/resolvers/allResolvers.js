@@ -51,6 +51,7 @@ const allResolvers = {
     ...songResolver.Mutation,
     ...storageResolver.Mutation,
   },
+    ...playlistsMSResolvers.playlistTypeResolvers,
 };
 
 module.exports = { allResolvers };

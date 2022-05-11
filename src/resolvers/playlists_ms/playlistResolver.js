@@ -1,5 +1,23 @@
 const axios = require("axios");
-const { playlistsMS_url } = require("../../MS_urls");
+const { playlistsMS_url, songsMS_url } = require("../../MS_urls");
+
+const playlistSongsResolver = async (playlist) => {
+  const songList = playlist.playlist_songs;
+  try {
+    const data = await axios.post(`${songsMS_url}/track/batch`, { idList: songList });
+    return data.data.data
+  } catch (error) {
+    throw new Error(error.response.data);
+  }
+};
+
+const playlistTypeResolvers = {
+  Playlist: { playlist_songs: playlistSongsResolver },
+  PlaylistSongsByUserName: { playlist_songs: playlistSongsResolver },
+  PlaylistSongsById: { playlist_songs: playlistSongsResolver },
+
+};
+
 
 const playlistQueryResolvers = {
   getAllPlaylists: async (_, args) => {
@@ -125,4 +143,4 @@ const playlistMutationsResolvers = {
   },
 };
 
-module.exports = { playlistQueryResolvers, playlistMutationsResolvers };
+module.exports = { playlistQueryResolvers, playlistMutationsResolvers, playlistTypeResolvers };
