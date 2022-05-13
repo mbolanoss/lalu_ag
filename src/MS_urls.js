@@ -1,9 +1,9 @@
-const songsMS_ip = "http://localhost";
+const songsMS_ip = "http://172.17.0.7";
 const songsMS_port = 3003;
 const songsMS_url = `${songsMS_ip}:${songsMS_port}`;
 
-const playlistsMS_ip = "http://localhost";
-const playlistsMS_port = 3002;
+const playlistsMS_ip = "http://172.17.0.5";
+const playlistsMS_port = 3000;
 const playlistsMS_url = `${playlistsMS_ip}:${playlistsMS_port}/lalu/playlists`;
 
 const eventsMS_ip = "http://172.19.0.3";
@@ -22,8 +22,8 @@ const authMS_ip = "http://172.18.0.3";
 const authMS_port = 3000;
 const authMS_url = `${authMS_ip}:${authMS_port}`;
 
-const artistMS_ip = "http://localhost";
-const artistMS_port = 3001;
+const artistMS_ip = "http://172.17.0.6";
+const artistMS_port = 3000;
 const artistMS_url = `${artistMS_ip}:${artistMS_port}/lalu/artist`;
 
 const queueMS_ip = "http://172.17.0.3";
