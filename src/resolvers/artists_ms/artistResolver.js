@@ -1,5 +1,33 @@
 const axios = require('axios');
-const { artistMS_url } = require('../../MS_urls');
+const { artistMS_url, playlistsMS_url, songsMS_url } = require('../../MS_urls');
+
+
+const artistAlbumsResolver = async (artist) => {
+    const playlist_username = artist.artist_username;
+    try {
+        const data = await axios.get(`${playlistsMS_url}/username/${playlist_username}/albums`);
+        return data.data.data
+    } catch (error) {
+        throw new Error(error.response.data);
+    }
+};
+
+const artistSongsResolver = async (artist) => {
+    const id = artist._id;
+    try {
+        const data = await axios.get(`${songsMS_url}/artist/${id}`);
+        return data.data.data
+    } catch (error) {
+        throw new Error(error.response.data);
+    }
+};
+
+const artistTypeResolvers = {
+    Artist: { artist_albums: artistAlbumsResolver, artist_songs: artistSongsResolver },
+    ArtistAlbums: { artist_albums: artistAlbumsResolver },
+    ArtistSongs: { artist_songs: artistSongsResolver },
+};
+
 
 const artistQueryResolvers = {
     getAllArtists: async (_, args) => {
@@ -13,6 +41,16 @@ const artistQueryResolvers = {
     getArtistByName: async (_, args) => {
         const artist_name = args.artist_name;
         const requestURL = `${artistMS_url}/artistName/${artist_name}`;
+        try {
+            const response = await axios.get(requestURL);
+            return response.data.data;
+        } catch (error) {
+            throw new Error(error.response.data);
+        }
+    },
+    getArtistByUserName: async (_, args) => {
+        const artist_username = args.artist_username;
+        const requestURL = `${artistMS_url}/username/${artist_username}`;
         try {
             const response = await axios.get(requestURL);
             return response.data.data;
@@ -206,4 +244,4 @@ const artistMutationsResolvers = {
 
 };
 
-module.exports = { artistQueryResolvers, artistMutationsResolvers };
+module.exports = { artistQueryResolvers, artistMutationsResolvers, artistTypeResolvers };

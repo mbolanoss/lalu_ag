@@ -22,8 +22,8 @@ const authMS_ip = "http://172.18.0.3";
 const authMS_port = 3000;
 const authMS_url = `${authMS_ip}:${authMS_port}`;
 
-const artistMS_ip = "http://172.17.0.6";
-const artistMS_port = 3000;
+const artistMS_ip = "http://localhost";
+const artistMS_port = 3002;
 const artistMS_url = `${artistMS_ip}:${artistMS_port}/lalu/artist`;
 
 const queueMS_ip = "http://172.17.0.3";

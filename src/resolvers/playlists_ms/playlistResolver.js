@@ -20,7 +20,7 @@ const playlistTypeResolvers = {
 
 
 const playlistQueryResolvers = {
-  getAllPlaylists: async (_, args) => {
+  getAllPlaylistsAndAlbums: async (_, args) => {
     try {
       const response = await axios.get(`${playlistsMS_url}`);
       return response.data.data;
@@ -28,9 +28,19 @@ const playlistQueryResolvers = {
       throw new Error(error.response.data);
     }
   },
-  getAllUsernamePlaylists: async (_, args) => {
+  getAllUsernamePlaylistsAlbums:async (_, args) => {
     const playlist_username = args.playlist_username;
     const requestURL = `${playlistsMS_url}/username/${playlist_username}`;
+    try {
+      const response = await axios.get(requestURL);
+      return response.data.data;
+    } catch (error) {
+      throw new Error(error.response.data);
+    }
+  },
+  getAllUsernamePlaylists: async (_, args) => {
+    const playlist_username = args.playlist_username;
+    const requestURL = `${playlistsMS_url}/username/${playlist_username}/playlist`;
     try {
       const response = await axios.get(requestURL);
       return response.data.data;
