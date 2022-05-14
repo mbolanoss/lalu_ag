@@ -15,24 +15,24 @@ const { playlistsMSTypeDefs } = require("./playlists_ms/allTypeDefs");
 const { artistMSTypeDefs } = require("./artists_ms/allTypeDefs");
 
 const songsTypeDefs = [
-  songType,
-  songQuery,
-  songMutation,
-  songStorageMutation,
-  songStorageQuery,
-  songStorageType,
+    songType,
+    songQuery,
+    songMutation,
+    songStorageMutation,
+    songStorageQuery,
+    songStorageType,
 ];
 
 // Add all type defs in this array
 const allTypeDefs = [
-  userType,
-  profilesMSTypeDefs,
-  uploadFileType,
-  eventType,
-  playlistsMSTypeDefs,
-  artistMSTypeDefs,
-  query,
-  songsTypeDefs,
+    userType,
+    profilesMSTypeDefs,
+    uploadFileType,
+    eventType,
+    playlistsMSTypeDefs,
+    artistMSTypeDefs,
+    query,
+    songsTypeDefs,
 ];
 
 module.exports = { allTypeDefs };

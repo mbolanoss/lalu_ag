@@ -1,4 +1,5 @@
-const songsMS_ip = "http://localhost";
+
+const songsMS_ip = "http://172.17.0.7";
 const songsMS_port = 3003;
 const songsMS_url = `${songsMS_ip}:${songsMS_port}`;
 
@@ -23,7 +24,7 @@ const authMS_port = 3000;
 const authMS_url = `${authMS_ip}:${authMS_port}`;
 
 const artistMS_ip = "http://localhost";
-const artistMS_port = 3002;
+const artistMS_port = 3000;
 const artistMS_url = `${artistMS_ip}:${artistMS_port}/lalu/artist`;
 
 const queueMS_ip = "http://172.17.0.3";
@@ -31,12 +32,12 @@ const queueMS_port = 3000;
 const queueMS_url = `${queueMS_ip}:${queueMS_port}`;
 
 module.exports = {
-  songsMS_url,
-  playlistsMS_url,
-  eventsMS_url,
-  storageMS_url,
-  profilesMS_url,
-  authMS_url,
-  artistMS_url,
-  queueMS_url,
+    songsMS_url,
+    playlistsMS_url,
+    eventsMS_url,
+    storageMS_url,
+    profilesMS_url,
+    authMS_url,
+    artistMS_url,
+    queueMS_url,
 };
