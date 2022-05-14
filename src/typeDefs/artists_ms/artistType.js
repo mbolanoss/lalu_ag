@@ -7,55 +7,46 @@ const artistType = gql`
         artist_name : String!
         artist_biography: String!
         artist_followers : Int
-        artist_albums : [String]
-        artist_songs : [String]
+        artist_albums : [albumsFromArtist]
+        artist_songs : [songFromArtist]
         artist_contact_information : [String]
         artist_photo : String
     }
-    type ArtistByName {
+
+    type ArtistAlbums {
+        artist_albums : [albumsFromArtist]
+    }
+
+    type ArtistSongs {
+        artist_songs : [songFromArtist]
+    }
+
+    type ArtistInformation {
+        artist_contact_information : [String]
+    }
+
+    type albumsFromArtist {
         _id : String!
-        artist_username : String!
-        artist_biography: String!
-        artist_followers : Int
-        artist_albums : [String]
-        artist_songs : [String]
-        artist_contact_information : [String]
-        artist_photo : String
+        playlist_username : String!
+        playlist_name : String!
+        playlist_description : String
+        playlist_privacity : Boolean!
+        playlist_cover : String
+        playlist_songs : [String]
     }
-
-    type ArtistAlbumsByArtistName {
-        artist_albums : [String]
-    }
-
-    type ArtistSongsByArtistName {
-        artist_songs : [String]
-    }
-
-    type ArtistInformationByArtistName {
-        artist_contact_information : [String]
-    }
-
-    type ArtistById {
-        artist_username : String!
-        artist_name : String!
-        artist_biography: String!
-        artist_followers : Int
-        artist_albums : [String]
-        artist_songs : [String]
-        artist_contact_information : [String]
-        artist_photo : String
-    }
-
-    type ArtistAlbumsById {
-        artist_albums : [String]
-    }
-
-    type ArtistSongsById {
-        artist_songs : [String]
-    }
-
-    type ArtistInformationById {
-        artist_contact_information : [String]
+    type songFromArtist {
+        _id: String!
+        title: String!
+        duration: Int!
+        artists: [String]!
+        tags: [String]!
+        album: String!
+        privacy: Boolean!
+        credits: [String]!
+        releaseDate: String!
+        plays: Int!
+        likes: Int!
+        dislikes: Int!
     }
 `;
 
