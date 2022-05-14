@@ -51,7 +51,7 @@ const allResolvers = {
         ...songResolver.Mutation,
         ...storageResolver.Mutation,
     },
-    ...SongTypeResolvers
+    ...SongTypeResolvers,
     ...playlistsMSResolvers.playlistTypeResolvers,
     ...artistsMSResolvers.artistTypeResolvers,
 };
