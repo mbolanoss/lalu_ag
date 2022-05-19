@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { playlistsMS_url, songsMS_url } = require("../../MS_urls");
+const { playlistsMS_url, songsMS_url , artistMS_url } = require("../../MS_urls");
 
 const playlistSongsResolver = async (playlist) => {
   const songList = playlist.playlist_songs;
@@ -11,11 +11,41 @@ const playlistSongsResolver = async (playlist) => {
   }
 };
 
+const artistPlaylistResolver = async(data) =>{
+  const artist = data.artists;
+  let artist_names = [];
+  try{
+    for(let i = 0;i<artist.length; i++){
+      const data = await axios.get(`${artistMS_url}/${artist[i]}`);
+      artist_names.push(data.data.data.artist_name);
+    }
+    return artist_names;
+  } catch(error){
+    throw new Error(error.response.data);
+  }
+
+}
+
+const albumPlaylistResolver = async(data) =>{
+  const album = data.album;
+  try{
+    const data = await axios.get(`${playlistsMS_url}/id/${album}`);
+    console.log(data.data.data)
+    return data.data.data.playlist_name;
+  } catch(error){
+    throw new Error(error.response.data);
+  }
+
+}
+
 const playlistTypeResolvers = {
   Playlist: { playlist_songs: playlistSongsResolver },
   PlaylistSongsByUserName: { playlist_songs: playlistSongsResolver },
   PlaylistSongsById: { playlist_songs: playlistSongsResolver },
-
+  songFromPlaylist :{
+    artists:artistPlaylistResolver,
+    album:albumPlaylistResolver
+  },
 };
 
 
